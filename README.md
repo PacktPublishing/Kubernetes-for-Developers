@@ -1,16 +1,20 @@
 # Kubernetes for Developers 
 
-<a href="https://prod.packtpub.com/in/virtualization-and-cloud/kubernetes-developers?utm_source=github&utm_medium=repository&utm_campaign="><img src="" alt="Kubernetes for Developers " height="256px" align="right"></a>
+<a href="https://prod.packtpub.com/in/virtualization-and-cloud/kubernetes-developers?utm_source=github&utm_medium=repository&utm_campaign=9781788834759"><img src="https://prod.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/0/b09570.png" alt="Kubernetes for Developers " height="256px" align="right"></a>
 
-This is the code repository for [Kubernetes for Developers ](https://prod.packtpub.com/in/virtualization-and-cloud/kubernetes-developers?utm_source=github&utm_medium=repository&utm_campaign=), published by Packt.
+This is the code repository for [Kubernetes for Developers ](https://prod.packtpub.com/in/virtualization-and-cloud/kubernetes-developers?utm_source=github&utm_medium=repository&utm_campaign=9781788834759), published by Packt.
 
-**Distributed search, analytics, and visualization using Elasticsearch, Logstash, Beats and Kibana	**
+**Distributed search, analytics, and visualization using Elasticsearch, Logstash, Beats and Kibana**
 
 ## What is this book about?
-0
+Kubernetes is documented and typically approached from the perspective of someone running software that has already been built. Kubernetes may also be used to enhance the development process, enabling more consistent testing and analysis of code to help developers verify not only its correctness, but also its efficiency. This book introduces key Kubernetes concepts, coupled with examples of how to deploy and use them with a bit of Node.js and Python example code, so that you can quickly replicate and use that knowledge.
 
 This book covers the following exciting features:
-
+* Build your software into containers
+* Deploy and debug software running in containers within Kubernetes
+* Declare and add configuration through Kubernetes
+* Define how your application fits together, using internal and external services
+* Add feedback to your code to help Kubernetes manage your services
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1788834755) today!
 
@@ -18,7 +22,7 @@ If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1788
 alt="https://www.packtpub.com/" border="5" /></a>
 
 ## Instructions and Navigations
-All of the code is organized into folders. For example, Chapter02.
+All of the code is organized into folders. For example, 
 
 The code will look like the following:
 ```
@@ -33,6 +37,7 @@ signal.signal(signal.SIGTERM, sigterm_handler)
 This book is for entry-level data professionals, software engineers, e-commerce developers, full-stack developers who want to understand everything about Elastic stack and learn how the real-time processing and search engine works for business analytics and enterprise search applications.No previous experience with the Elastic stack is required; However, concepts of data warehousing and databases would be helpful.
 
 With the following software and hardware list you can run all code files present in the book (Chapter 1-10).
+
 ### Software and Hardware List
 | Chapter  | Software required                                                                      | OS required                        |
 | -------- | -------------------------------------------------------------------------------------- | ---------------------------------- |
@@ -55,28 +60,6 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 Joseph Heck has broad development and management experience across start-ups and large companies. He has architected, developed, and deployed a wide variety of solutions, ranging from mobile and desktop applications to cloud-based distributed systems.
 He builds and directs teams and mentors individuals to improve the way they build, validate, deploy, and run software. He also works extensively with and in open source, collaborating across many projects, including Kubernetes.
 
-****
-0
-
-****
-0
-
-****
-0
-
-****
-0
-
-## Other books by the authors
-[]()
-
-[]()
-
-[]()
-
-[]()
-
-[]()
 
 ### Suggestions and Feedback
 [Click here](https://docs.google.com/forms/d/e/1FAIpQLSdy7dATC6QmEL81FIUuymZ0Wy9vH1jHkvpY57OiMeKGqib_Ow/viewform) if you have any feedback or suggestions.
