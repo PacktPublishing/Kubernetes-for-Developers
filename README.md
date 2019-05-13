@@ -44,8 +44,6 @@ With the following software and hardware list you can run all code files present
 | All      | Kubernetes 1.8, Docker Community Edition, kubectl, Virtualbox-v5.2.6, minikube v0.24.1 | Windows, Mac OS X, and Linux (Any) |
 
 
-We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it]().
-
 ### Related products
 * DevOps with Kubernetes [[Packt]](https://prod.packtpub.com/in/virtualization-and-cloud/devops-kubernetes?utm_source=github&utm_medium=repository&utm_campaign=9781788396646) [[Amazon]](https://www.amazon.com/dp/1788396642)
 
