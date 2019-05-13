@@ -47,9 +47,9 @@ With the following software and hardware list you can run all code files present
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it]().
 
 ### Related products
-*  [[Packt]](https://prod.packtpub.com/in/virtualization-and-cloud/devops-kubernetes?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1788396642)
+*  [[Packt]](https://prod.packtpub.com/in/virtualization-and-cloud/devops-kubernetes?utm_source=github&utm_medium=repository&utm_campaign=9781788396646) [[Amazon]](https://www.amazon.com/dp/1788396642)
 
-*  [[Packt]](https://prod.packtpub.com/in/virtualization-and-cloud/mastering-kubernetes?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1786461005)
+*  [[Packt]](https://prod.packtpub.com/in/virtualization-and-cloud/mastering-kubernetes?utm_source=github&utm_medium=repository&utm_campaign=9781786461001) [[Amazon]](https://www.amazon.com/dp/1786461005)
 
 *  [[Packt]]() [[Amazon]](https://www.amazon.com/dp/)
 
@@ -57,7 +57,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 ## Get to Know the Author
 **Joseph Heck**
-Joseph Heck has broad development and management experience across start-ups and large companies. He has architected, developed, and deployed a wide variety of solutions, ranging from mobile and desktop applications to cloud-based distributed systems.
+ has broad development and management experience across start-ups and large companies. He has architected, developed, and deployed a wide variety of solutions, ranging from mobile and desktop applications to cloud-based distributed systems.
 He builds and directs teams and mentors individuals to improve the way they build, validate, deploy, and run software. He also works extensively with and in open source, collaborating across many projects, including Kubernetes.
 
 
