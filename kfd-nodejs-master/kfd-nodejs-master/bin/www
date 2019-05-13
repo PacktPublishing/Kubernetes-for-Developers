@@ -1,0 +1,134 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var fs = require('fs');
+var nconf = require('nconf');
+
+nconf.use('memory');
+nconf.argv().env().file({ file: '/etc/nodejs-config/feature.flags'});
+/**
+ * base configuration in the file /etc/nodejs-config/feature.flags
+ *  override any values in the file from environment variables
+ *  override any remaining values from arguments on commandline
+ *  defaults below if nothing else is set
+*/
+nconf.defaults({
+   "PORT": "3000",
+   "ENV": "development",
+   "debug": true,
+   "features": {
+     "flag1": 123,
+     "flag2": 456
+   },
+   "db": "localhost"
+});
+var app = require('../app');
+var debug = require('debug')('kfd-nodejs:server');
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * report on key configuration
+ */
+
+debug('PORT for nodejs application set to %d', port);
+debug('ENV for nodejs application set to %s', nconf.get('ENV'));
+debug('features for nodejs application set to %j', nconf.get('features'));
+debug('DB hostname is set to %s', nconf.get('db'))
+
+/** 
+ * assign the configuration object into the app for general availability
+ */
+
+app.set('nconf', nconf)
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
+/**
+ * SIGTERM handler to terminate (semi) gracefully
+ */
+
+ process.on(process.SIGTERM, function() {
+   console.log('Received SIGTERM signal, now shutting down...');
+   process.exit(0);
+ })

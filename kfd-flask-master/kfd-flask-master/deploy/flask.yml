@@ -1,0 +1,98 @@
+---
+# EXPORT SERVICE INTERFACE
+kind: Service
+apiVersion: v1
+metadata:
+  name: flask-service
+  annotations:
+    prometheus.io/scrape: "true"
+spec:
+  type: NodePort
+  ports:
+  - port: 5000
+  selector:
+      app: flask
+---
+# CONFIGURATION FOR THE FLASK APP
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: flask-config
+data:
+  # debuging enabled or not
+  CONFIG_FILE: "/etc/flask-config/feature.flags"
+  feature.flags: |
+    [features]
+    greeting=hello
+    debug=true
+    db=redis-service
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: flask
+  labels:
+    run: flask
+spec:
+  template:
+    metadata:
+      labels:
+         app: flask
+    spec:
+      containers:
+      - name: jaeger-agent
+        image: jaegertracing/jaeger-agent
+        ports:
+        - containerPort: 5775
+          protocol: UDP
+        - containerPort: 5778
+        - containerPort: 6831
+          protocol: UDP
+        - containerPort: 6832
+          protocol: UDP
+        command:
+        - "/go/bin/agent-linux"
+        - "--collector.host-port=jaeger-collector:14267"
+      - name: flask
+        image: quay.io/kubernetes-for-developers/flask:0.7.0
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "40Mi"
+            cpu: "500m"
+          requests:
+            memory: "40Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+           name: flask-config
+        volumeMounts:
+          - name: config
+            mountPath: /etc/flask-config
+            readOnly: true
+          - name: cache-volume
+            mountPath: /opt/cache
+        livenessProbe:
+          httpGet:
+            path: /alive
+            port: 5000
+          initialDelaySeconds: 1
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 15
+      volumes:
+        - name: config
+          configMap:
+            name: flask-config
+        - name: cache-volume
+          emptyDir: {}
+      initContainers:
+        - name: init-myservice
+          image: busybox
+          command: ['sh', '-c', 'until nslookup redis-service; do echo waiting for redis-service; sleep 2; done;']
